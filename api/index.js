@@ -9,6 +9,7 @@ import userRouter from './routes/userRoutes.js';
 import router from './routes/EmployeeRoutes.js';
 import blogRouter from './routes/BlogRoutes.js';
 import jobRoutes from './routes/jobRoutes.js'; // Import job routes
+import CompanyPendingPayment from './routes/CompanyPendingPayment.js'; // Import job routes
 import TrainerPendingPayment from './routes/TrainerPendingPayment.js'; // Import job routes
 
 import newsletterRoute from './routes/newsletterRoute.js';
@@ -34,6 +35,7 @@ app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/blog', blogRouter);
 app.use('/api/newsletter', newsletterRoute);
 app.use('/api/TrainerPendingPayment', TrainerPendingPayment);
+app.use('/api/CompanyPendingPayment', CompanyPendingPayment);
 
 // Sample Route
 app.get("/", (req, res) => {

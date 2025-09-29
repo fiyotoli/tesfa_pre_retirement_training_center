@@ -10,10 +10,7 @@ import {
   MdListAlt,
   MdFeedback,
 } from 'react-icons/md';
-import {
-FaBriefcase
-
-} from 'react-icons/fa';
+import { FaBriefcase } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
 function Navbar({ setToken }) {
@@ -101,15 +98,35 @@ function Navbar({ setToken }) {
             paddingRight: '4px',
           }}
         >
-          {/* Section 1 */}
+          {/* Trainer Section */}
           <div className="pb-3 border-bottom border-black">
             <NavLink to="/add" className={() => navLinkClass('/add')} onClick={() => onNavLinkClick('/add')}>
               <MdAddCircleOutline className="sidebar-icon" size={18} />
-              <span>Add Employee</span>
+              <span>Add Trainer</span>
             </NavLink>
             <NavLink to="/list" className={() => navLinkClass('/list')} onClick={() => onNavLinkClick('/list')}>
               <MdFormatListBulleted className="sidebar-icon" size={18} />
-              <span>List Employee</span>
+              <span>List Trainer</span>
+            </NavLink>
+          </div>
+
+          {/* Pending Payment Section */}
+          <div className="pb-3 pt-3 border-bottom border-black">
+            <NavLink
+              to="/Trainer_Pending_Payment_list"
+              className={() => navLinkClass('/Trainer_Pending_Payment_list')}
+              onClick={() => onNavLinkClick('/Trainer_Pending_Payment_list')}
+            >
+              <MdFormatListBulleted className="sidebar-icon" size={18} />
+              <span>Trainer (Pending Payment)</span>
+            </NavLink>
+            <NavLink
+              to="/Company_Pending_Payment_list"
+              className={() => navLinkClass('/Company_Pending_Payment_list')}
+              onClick={() => onNavLinkClick('/Company_Pending_Payment_list')}
+            >
+              <MdFormatListBulleted className="sidebar-icon" size={18} />
+              <span>Company (Pending Payment)</span>
             </NavLink>
           </div>
 
@@ -137,7 +154,7 @@ function Navbar({ setToken }) {
             </NavLink>
           </div>
 
-          {/* Blogs & Feedback */}
+          {/* Blogs & Feedback Section */}
           <div className="py-3">
             <NavLink to="/add_blog" className={() => navLinkClass('/add_blog')} onClick={() => onNavLinkClick('/add_blog')}>
               <MdLibraryBooks className="sidebar-icon" size={18} />
@@ -156,7 +173,7 @@ function Navbar({ setToken }) {
       </div>
 
       {/* Content Offset */}
-      <div className={`container-fluid pt-5 px-4 ms-0 ${sidebarOpen ? 'ms-250' : ''}`}></div>
+      <div className="container-fluid pt-5 px-4" style={{ marginLeft: sidebarOpen ? '250px' : '0' }}></div>
 
       {/* Styles */}
       <style>{`
@@ -189,7 +206,6 @@ function Navbar({ setToken }) {
           color: white !important;
         }
 
-        /* Optional custom scrollbar */
         ::-webkit-scrollbar {
           width: 6px;
         }
