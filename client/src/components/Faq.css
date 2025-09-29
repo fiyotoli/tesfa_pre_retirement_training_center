@@ -1,0 +1,11 @@
+/* Custom CSS to hide default icons */
+.accordion-button:not(.collapsed)::after {
+    display: none; /* Hide the collapse icon */
+}
+.accordion-button::after {
+    display: none; /* Hide the collapse icon */
+}
+ul {
+    cursor: pointer;
+    background-attachment: fixed;
+}

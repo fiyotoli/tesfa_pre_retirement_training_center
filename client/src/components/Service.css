@@ -1,0 +1,28 @@
+.service-card {
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #6c757d;
+  }
+  
+  .service-card .bi {
+    transition: font-size 0.3s ease, color 0.3s ease;
+  }
+  
+  .hovered-card {
+    background-color: #814516 !important;
+    color: #fff !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .hovered-card .bi {
+    color: #fff !important;
+  }
+  
+  .hovered-card .card-text {
+    color: #fff !important;
+  }
+  
+  .border-white {
+    border-bottom: 1px solid #fff !important;
+  }
+  

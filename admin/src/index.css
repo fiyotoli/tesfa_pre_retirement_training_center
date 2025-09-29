@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+  }
+
+* {
+    margin: 0;                /* Remove default margin */
+    padding: 0;               /* Remove default padding */
+    box-sizing: border-box;   /* Include padding and border in total width and height */
+}
+/* Optional - App.css or index.css */
+.table-responsive {
+  overflow-x: auto;
+}
+/* Ensure html and body fill the viewport */
+html, body {
+    min-width: 100%;             /* Set width to 100% of the viewport */
+    min-height: 100%;             /* Set height to 100% of the viewport */
+    overflow-x: auto; 
+    overflow-y: auto;      /* Prevent horizontal scrolling */
+         /* Allow vertical scrolling if necessary */
+}
+.container {
+  max-width: 100%;
+  padding: 0 15px;
+}
+.sidebar-link {
+    transition: all 0.3s ease;
+  }
+.sidebar-link:hover {
+    background-color: #814516; /* Light gray hover */
+    border-radius: 5px;
+    color: rgb(255, 255, 255) !important;
+    padding: 5px;
+  }
+  .text-primary-custom {
+  color: #814516 !important; /* your custom color */
+}
+  .bg-primary-custom {
+  background-color: #814516 !important; /* your custom color */
+}
+  .text-yellow-custom {
+  color: #fdcf31 !important; /* your custom color */
+}
+  .bg-yellow-custom {
+  background-color: #fdcf31 !important; /* your custom color */
+}
+  .bg-yellow-custom-opacity {
+  background-color: rgb(253, 207, 49,.4) !important; /* your custom color */
+}
+.exp-bg:hover{
+  background: rgb(0, 0, 0) !important;
+}
+.bg-primary-custom-opacity{
+   background-color: rgb(44, 168, 166,.1) !important; /* your custom color */
+}
+/* Change radio button color when checked */
+.form-check-input:checked {
+  background-color: #814516 !important;   /* Replace with your custom color */
+  border-color: #814516 important;
+}
+
+/* Optional: ensure the dot inside is also visible */
+.form-check-input:checked::before {
+  background-color: #814516 important;
+}
+.custom-outline-primary{
+ border: 1px solid #814516 !important;
+}
+
+/* Optional: Custom scrollbar for sidebar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #814516;
+  border-radius: 4px;
+}
+.view-detail-button {
+  background: #814516 !important;
+  color: white !important;
+ 
+  
+}

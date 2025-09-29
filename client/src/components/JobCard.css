@@ -1,0 +1,37 @@
+.job-card:hover {
+  background-color: #f0f8ff; /* Light primary-like bg on hover */
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.view-detail-button {
+  background: transparent;
+  color: black;
+  border: 1px solid rgb(129, 69, 22);
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+
+.view-detail-button:hover,
+.view-detail-button:active {
+  background: #814516 !important;
+  color: white !important;
+  border: none !important;
+  outline: none;
+}
+
+.view-detail-button-register{
+background: rgb(129, 69, 22);
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.view-detail-button-register:hover,
+.view-detail-button-register:active {
+ background: rgb(99, 45, 3);
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}

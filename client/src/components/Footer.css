@@ -1,0 +1,23 @@
+/* Social media icon hover effect */
+.icon {
+    border-radius: 50%;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgb(253, 207, 49,.6);
+  }
+  
+  /* Link hover effect */
+  .footer-link:hover {
+    color: #814516 !important;
+    text-decoration: underline;
+  }
+  

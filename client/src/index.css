@@ -1,0 +1,93 @@
+
+
+* {
+    margin: 0;                /* Remove default margin */
+    padding: 0;               /* Remove default padding */
+    box-sizing: border-box;   /* Include padding and border in total width and height */
+}
+.employee-card .card-line {
+  border-top: 1px solid rgba(0, 0, 0, 1); /* default line */
+  transition: border-color 0.3s ease;
+}
+
+.employee-card:hover .card-line {
+  border-top: 1px solid #fff;
+}
+.employee-card .btn-primary {
+  background-color: #814516 !important; /* Bootstrap primary blue */
+  color: white !important;
+  border: none !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.employee-card:hover .btn-primary {
+  background-color: white !important;
+  color: black !important;
+}
+
+.hover-card {
+  transition: background-color 0.3s ease;
+}
+
+.hover-card:hover {
+  background-color: #814516 !important;
+  color: white;
+}
+
+.hover-card:hover h6,
+.hover-card:hover p,
+.hover-card:hover svg {
+  color: white !important;
+}
+
+/* Ensure html and body fill the viewport */
+html, body {
+    min-width: 100%;             /* Set width to 100% of the viewport */
+    min-height: 100%;             /* Set height to 100% of the viewport */
+    overflow-x: hidden; 
+    overflow-y: auto;      /* Prevent horizontal scrolling */
+         /* Allow vertical scrolling if necessary */
+}
+  
+a.active hr{
+    display: block;
+}
+
+.card:hover .product-image {
+    transform: scale(1.1); /* Zoom out effect on image */
+  }
+  
+  .text-primary-custom {
+  color: #814516 !important; /* your custom color */
+}
+  .bg-primary-custom {
+  background-color: #814516 !important; /* your custom color */
+}
+  .text-yellow-custom {
+  color: #fdcf31 !important; /* your custom color */
+}
+  .bg-yellow-custom {
+  background-color: #fdcf31 !important; /* your custom color */
+}
+  .bg-yellow-custom-opacity {
+  background-color:rgb(25, 45, 61) !important; /* your custom color */
+}
+.exp-bg:hover{
+  background: rgb(0, 0, 0) !important;
+}
+.bg-primary-custom-opacity{
+   background-color:rgb(129, 69, 22,.4) !important; /* your custom color */
+}
+/* Change radio button color when checked */
+.form-check-input:checked {
+  background-color: #814516 !important;   /* Replace with your custom color */
+  border-color: #814516 important;
+}
+
+/* Optional: ensure the dot inside is also visible */
+.form-check-input:checked::before {
+  background-color: #814516 important;
+}
+.custom-outline-primary{
+ border: 1px solid #814516 !important;
+}
