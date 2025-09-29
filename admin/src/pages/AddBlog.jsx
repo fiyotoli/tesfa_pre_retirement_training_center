@@ -8,11 +8,11 @@ import { FaUserPlus } from "react-icons/fa";
 
 const AddBlog = ({ token }) => {
   const [image1, setImage1] = useState(null);
+  const [file, setFile] = useState(null); // New state for PDF/DOCX
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [date, setDate] = useState("");
-  const [socialMediaLink, setSocialMediaLink] = useState("");
-  const [googleDriveLink, setGoogleDriveLink] = useState(""); // Google Drive link state
+  const [googleDriveLink, setSocialMediaLink] = useState("");
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -28,8 +28,9 @@ const AddBlog = ({ token }) => {
       formData.append("content", content);
       formData.append("date", date);
       formData.append("socialMediaLink", socialMediaLink);
-      formData.append("googleDriveLink", googleDriveLink); // append Google Drive link
       formData.append("image1", image1);
+
+      if (file) formData.append("file", file); // append uploaded file
 
       const response = await axios.post(`${backendUrl}/api/blog/add`, formData, {
         headers: {
@@ -44,8 +45,8 @@ const AddBlog = ({ token }) => {
         setContent("");
         setDate("");
         setSocialMediaLink("");
-        setGoogleDriveLink(""); // reset Google Drive link
         setImage1(null);
+        setFile(null); // reset file
       } else {
         toast.error(response.data.message);
       }
@@ -82,6 +83,17 @@ const AddBlog = ({ token }) => {
             onChange={(e) => setImage1(e.target.files[0])}
           />
         </label>
+      </div>
+
+      {/* PDF / DOCX Upload */}
+      <div className="mb-4">
+        <label className="form-label">Upload File (PDF, DOCX, etc.)</label>
+        <input
+          type="file"
+          className="form-control"
+          onChange={(e) => setFile(e.target.files[0])}
+          accept=".pdf,.doc,.docx,.txt,.xls,.xlsx" // allow multiple formats
+        />
       </div>
 
       {/* Blog Fields */}
@@ -128,21 +140,17 @@ const AddBlog = ({ token }) => {
         />
       </div>
 
-      {/* Google Drive Document Link */}
+
+ {/* google drive document link */}
       <div className="mb-3">
         <label className="form-label">Google Drive Document Link (optional)</label>
         <input
           type="url"
           className="form-control"
-          placeholder="https://docs.google.com/document/d/FILE_ID/preview"
-          value={googleDriveLink}
-          onChange={(e) => setGoogleDriveLink(e.target.value)}
+          value={socialMediaLink}
+          onChange={(e) => setSocialMediaLink(e.target.value)}
         />
-        <small className="form-text text-muted">
-          Use the /preview link for embedding in blog posts
-        </small>
       </div>
-
       <button type="submit" className="btn bg-primary-custom text-white">
         Submit Blog
       </button>

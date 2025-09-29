@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaCalendarAlt, FaExternalLinkAlt, FaBlog, FaFilePdf, FaFileAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaExternalLinkAlt, FaBlog, FaFilePdf } from 'react-icons/fa';
 import { backendUrl } from '../App';
 
 const SingleBlog = () => {
@@ -15,6 +15,7 @@ const SingleBlog = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
+  // Scroll to top when blog ID changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [id]);
@@ -73,8 +74,9 @@ const SingleBlog = () => {
     <div className="container mt-5 mb-2">
       <Link to="/blog_list" className="btn text-white bg-primary-custom mb-4">&larr; Back to Blogs</Link>
 
+      {/* Blog Main Section */}
       <div className="row mb-5">
-        {/* Left: Image, File, Social Link, Google Drive */}
+        {/* Left: Image, File, Social Link */}
         <div className="col-md-4">
           {blog.image && (
             <div className="p-2 rounded mb-3" style={{ boxShadow: '0 0 20px rgba(44, 168, 166,.6)' }}>
@@ -98,21 +100,6 @@ const SingleBlog = () => {
                 className="btn custom-outline-primary w-100 d-flex align-items-center justify-content-center gap-2"
               >
                 <FaFilePdf /> View File
-              </a>
-            </div>
-          )}
-
-          {/* Display Google Drive link */}
-          {blog.googleDriveLink && (
-            <div className="mb-3">
-              <h6 className="fw-bold">Google Drive Document:</h6>
-              <a
-                href={blog.googleDriveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn custom-outline-primary w-100 d-flex align-items-center justify-content-center gap-2"
-              >
-                <FaFileAlt /> View Document
               </a>
             </div>
           )}
