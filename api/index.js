@@ -39,7 +39,7 @@ app.use('/api/CompanyPendingPayment', CompanyPendingPayment);
 
 // Sample Route
 app.get("/", (req, res) => {
-    res.send("Welcome to the eEmploee Profile API!");
+    res.send(" API RUNNING SUCCESFULLY!");
   });
 
 // Server Listener
