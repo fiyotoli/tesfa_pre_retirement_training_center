@@ -73,7 +73,7 @@ const SingleBlog = () => {
 
   return (
     <div className="container mb-2 mt-5 pt-5">
-      <Link to="/blog" className="btn  view-detail-button mb-4 mt-2">&larr; ወደ ብሎግ ተመለስ</Link>
+      <Link to="/blog_list" className="btn  view-detail-button mb-4 mt-2">&larr; ወደ ብሎግ ተመለስ</Link>
 
       {/* Blog Main Section */}
       <div className=" mb-5">
