@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaCalendarAlt, FaExternalLinkAlt, FaBlog, FaFileAlt } from 'react-icons/fa'; // Added FaFileAlt
+import { FaCalendarAlt, FaExternalLinkAlt, FaBlog, FaFileAlt } from 'react-icons/fa';
 
 const SingleBlog = () => {
   const { id } = useParams();
@@ -40,7 +40,7 @@ const SingleBlog = () => {
         const res = await axios.get(`${backendUrl}/api/blog/list`);
         if (res.data.success) {
           const filtered = res.data.blogs.filter(b => b._id !== id);
-          setRelatedBlogs(filtered.slice(0, 5));
+          setRelatedBlogs(filtered.slice(0, 6)); // show only 6 blogs
         }
       } catch (err) {
         console.error(err);
@@ -57,28 +57,23 @@ const SingleBlog = () => {
   if (error) return <p className="text-danger text-center my-5">{error}</p>;
   if (!blog) return null;
 
-  const contentLength = blog.content.length;
-  const partLength = Math.ceil(contentLength / 3);
-  const rawParagraphs = [
-    blog.content.slice(0, partLength),
-    blog.content.slice(partLength, partLength * 2),
-    blog.content.slice(partLength * 2),
-  ];
-  const paragraphs = rawParagraphs.filter(p => p.trim().length > 0);
-
   const handleExploreClick = (blogId) => {
     navigate(`/blog/${blogId}`);
-    // Scroll will happen automatically due to useEffect on [id]
   };
 
   return (
     <div className="container mb-2 mt-5 pt-5">
-      <Link to="/blog_list" className="btn  view-detail-button mb-4 mt-2">&larr; ወደ ብሎግ ተመለስ</Link>
+      <Link to="/blog_list" className="btn view-detail-button mb-4 mt-2">
+        &larr; ወደ ብሎግ ተመለስ
+      </Link>
 
       {/* Blog Main Section */}
-      <div className=" mb-5">
+      <div className="mb-5">
         {blog.image && (
-          <div className="p-2 rounded mb-3" style={{ boxShadow: '0 0 20px rgba(25, 45, 61,.8)' }}>
+          <div
+            className="p-2 rounded mb-3"
+            style={{ boxShadow: '0 0 20px rgba(25, 45, 61,.8)' }}
+          >
             <img
               src={blog.image}
               alt={blog.title}
@@ -122,7 +117,7 @@ const SingleBlog = () => {
         )}
       </div>
 
-      {/* Right: Text Content */}
+      {/* Blog Content */}
       <div className="col-md-10 mb-5">
         <h2 className="fw-bold mb-3 text-capitalize">{blog.title}</h2>
 
@@ -132,9 +127,7 @@ const SingleBlog = () => {
         </div>
 
         <div className="lead">
-          {paragraphs.map((para, index) => (
-            <p key={index} className="mb-3">{para}</p>
-          ))}
+          <p className="mb-3">{blog.content}</p>
         </div>
       </div>
 
@@ -167,14 +160,21 @@ const SingleBlog = () => {
                     </h6>
                     <button
                       onClick={() => handleExploreClick(item._id)}
-                      className="btn btn-sm  view-detail-button w-100 mt-auto"
+                      className="btn btn-sm view-detail-button w-100 mt-auto"
                     >
-                       ዝርዝሮችን ይመልከቱ
+                      ዝርዝሮችን ይመልከቱ
                     </button>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Explore More Button */}
+          <div className="text-center mt-4">
+            <Link to="/blog_list" className="btn view-detail-button">
+              ተጨማሪ ብሎጎችን ይመልከቱ
+            </Link>
           </div>
         </div>
       </div>
