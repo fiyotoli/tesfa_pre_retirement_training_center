@@ -175,16 +175,16 @@ const CompanyPendingPaymentList = ({ token }) => {
               ) : (
                 <>
                   <button
-                    className="btn btn-primary btn-sm"
+                      className="btn btn-sm btn-warning me-2"
                     onClick={() => handleEditClick(company)}
                   >
-                    <FaEdit /> Edit
+                    <FaEdit /> 
                   </button>
                   <button
-                    className="btn btn-danger btn-sm"
+                     className="btn btn-sm btn-danger"
                     onClick={() => handleDelete(company._id)}
                   >
-                    <FaTrash /> Delete
+                    <FaTrash /> 
                   </button>
                 </>
               )}

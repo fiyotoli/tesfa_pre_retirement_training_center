@@ -102,11 +102,11 @@ function Navbar({ setToken }) {
           <div className="pb-3 border-bottom border-black">
             <NavLink to="/add" className={() => navLinkClass('/add')} onClick={() => onNavLinkClick('/add')}>
               <MdAddCircleOutline className="sidebar-icon" size={18} />
-              <span>Add Trainer</span>
+              <span>Add Trainee</span>
             </NavLink>
             <NavLink to="/list" className={() => navLinkClass('/list')} onClick={() => onNavLinkClick('/list')}>
               <MdFormatListBulleted className="sidebar-icon" size={18} />
-              <span>List Trainer</span>
+              <span>List Trainee</span>
             </NavLink>
           </div>
 
@@ -118,7 +118,7 @@ function Navbar({ setToken }) {
               onClick={() => onNavLinkClick('/Trainer_Pending_Payment_list')}
             >
               <MdFormatListBulleted className="sidebar-icon" size={18} />
-              <span>Trainer (Pending Payment)</span>
+              <span>Trainee (Pending Payment)</span>
             </NavLink>
             <NavLink
               to="/Company_Pending_Payment_list"

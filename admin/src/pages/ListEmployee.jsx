@@ -213,7 +213,7 @@ const ListEmployee = ({ token }) => {
     <div className="container mt-3">
       <div className="text-center my-4 pt-4">
         <h2 className="mb-4 text-primary-custom d-flex align-items-center gap-2">
-          <FaUsers className="text-primary-custom" /> List of Trainers Profile
+          <FaUsers className="text-primary-custom" /> List of Trainee Profile
         </h2>
 
         {/* Filters and Sorting */}

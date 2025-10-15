@@ -69,8 +69,8 @@ const DashboardHome = () => {
 
   const cardInfo = [
     { title: 'Blogs', icon: <MdArticle size={40} />, key: 'blog' },
-    { title: 'Active Trainers', icon: <MdPeople size={40} />, key: 'employee' },
-    { title: 'Pending Trainers', icon: <MdPeople size={40} />, key: 'pendingTrainers' },
+    { title: 'Active Trainee', icon: <MdPeople size={40} />, key: 'employee' },
+    { title: 'Pending Trainee', icon: <MdPeople size={40} />, key: 'pendingTrainers' },
     { title: 'Jobs', icon: <FaBriefcase size={40} />, key: 'jobs' },
     { title: 'Feedbacks', icon: <MdFeedback size={40} />, key: 'feedback' },
     { title: 'Testimonials', icon: <MdRateReview size={40} />, key: 'testimonial' },

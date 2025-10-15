@@ -82,7 +82,7 @@ const AddEmployee = async (req, res) => {
     });
 
     await employee.save();
-    res.json({ success: true, message: "Employee Added" });
+    res.json({ success: true, message: "Trainee Added" });
   } catch (error) {
     console.error("AddEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });
@@ -185,7 +185,7 @@ const EditEmployee = async (req, res) => {
       runValidators: true,
     });
 
-    res.json({ success: true, message: "Employee Updated" });
+    res.json({ success: true, message: "Trainee Updated" });
   } catch (error) {
     console.error("EditEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });
@@ -234,7 +234,7 @@ const employee = await EmployeeProfile.findById(id);
 const RemoveEmployee = async (req, res) => {
   try {
     await EmployeeProfile.findByIdAndDelete(req.body.id);
-    res.json({ success: true, message: "Employee Removed" });
+    res.json({ success: true, message: "Trainee Removed" });
   } catch (error) {
     console.error("RemoveEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });

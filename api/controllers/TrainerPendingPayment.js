@@ -1,52 +1,12 @@
 import TrainerPendingPayment from "../models/TrainerPendingPayment.js";
 import { v2 as cloudinary } from "cloudinary";
 
-// Helper to safely parse arrays
-const parseArrayField = (field) => {
-  if (!field) return [];
-  if (Array.isArray(field)) return field;
-  try {
-    return JSON.parse(field);
-  } catch {
-    return [field];
-  }
-};
-
 // Add Employee Controller
 const AddEmployee = async (req, res) => {
   try {
-    const {
-     
-      firstName,
-      lastName,
-     
-      educationLevel,
-      totalWorkExperience,
-      workExperienceGovernment,
-      workExperienceSelf,
-      additionalSkills,
-      neededJobType,
-      email,
-      phoneNumber,
-      isFeatured,
+    const { firstName, lastName, email, phoneNumber, address } = req.body;
 
-      // New fields
-      currentLocation,
-      education,
-      workExperience,
-      projects,
-      language,      // single language
-       // single proficiency
-    } = req.body;
-
-    const parsedAdditionalSkills = parseArrayField(additionalSkills);
-    const parsedNeededJobType = parseArrayField(neededJobType);
-    const parsedEducation = parseArrayField(education);
-    const parsedWorkExperience = parseArrayField(workExperience);
-    const parsedProjects = parseArrayField(projects);
-    const parsedLanguages = JSON.parse(language);
-
-    const parsedLocation = typeof currentLocation === "string" ? JSON.parse(currentLocation) : currentLocation;
+    const parsedAddress = typeof address === "string" ? JSON.parse(address) : address;
 
     // Upload image to cloudinary
     const image1 = req.files?.image1?.[0];
@@ -59,90 +19,28 @@ const AddEmployee = async (req, res) => {
     }
 
     const employee = new TrainerPendingPayment({
-     
       firstName,
       lastName,
-     
-      educationLevel,
-      totalWorkExperience: Number(totalWorkExperience),
-      workExperienceGovernment: Number(workExperienceGovernment),
-      workExperienceSelf: Number(workExperienceSelf),
-      additionalSkills: parsedAdditionalSkills,
-      neededJobType: parsedNeededJobType,
       email,
       phoneNumber,
+      address: parsedAddress,
       image: imagesUrl,
-      isFeatured: isFeatured === "true" || isFeatured === true || false,
-      currentLocation: parsedLocation,
-      education: parsedEducation,
-      workExperience: parsedWorkExperience,
-      projects: parsedProjects,
-    language: parsedLanguages,
-
     });
 
     await employee.save();
-    res.json({ success: true, message: "Trainer Registered Successfully" });
+    res.json({ success: true, message: "Trainee Registered Successfully" });
   } catch (error) {
     console.error("AddEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-const safeParse = (data) => {
-  if (!data) return [];
-  if (typeof data === 'object') return data; // already parsed
-  try {
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-};
-
+// Edit Employee Controller
 const EditEmployee = async (req, res) => {
   try {
-    const {
-      id,
-     
-      firstName,
-      lastName,
-     
-      educationLevel,
-      totalWorkExperience,
-      workExperienceGovernment,
-      workExperienceSelf,
-      email,
-      phoneNumber,
-      isFeatured,
-      currentLocation,
-      education,
-      workExperience,
-      projects,
-      language,
-      proficiency,
-    } = req.body;
+    const { id, firstName, lastName, email, phoneNumber, address } = req.body;
 
-    console.log('Raw workExperience:', workExperience);
-    console.log('Type:', typeof workExperience);
-
-    const additionalSkills = parseArrayField(req.body.additionalSkills);
-    const neededJobType = parseArrayField(req.body.neededJobType);
-
-    // Parse arrays or objects safely
-    const parsedEducation = safeParse(education);
-    const parsedWorkExperience = safeParse(workExperience);
-    const parsedProjects = safeParse(projects);
-    const parsedLanguage = safeParse(language);
-
-    // Parse currentLocation safely
-    let parsedLocation = currentLocation;
-    if (typeof currentLocation === "string") {
-      try {
-        parsedLocation = JSON.parse(currentLocation);
-      } catch {
-        parsedLocation = currentLocation;
-      }
-    }
+    const parsedAddress = typeof address === "string" ? JSON.parse(address) : address;
 
     const image1 = req.files?.image1?.[0];
     let imagesUrl = [];
@@ -155,25 +53,11 @@ const EditEmployee = async (req, res) => {
     }
 
     const updatedFields = {
-     
       firstName,
       lastName,
-     
-      educationLevel,
-      totalWorkExperience: Number(totalWorkExperience),
-      workExperienceGovernment: Number(workExperienceGovernment),
-      workExperienceSelf: Number(workExperienceSelf),
-      additionalSkills,
-      neededJobType,
       email,
       phoneNumber,
-      isFeatured: isFeatured === "true" || isFeatured === true || false,
-      currentLocation: parsedLocation,
-      education: parsedEducation,
-      workExperience: parsedWorkExperience,
-      projects: parsedProjects,
-      language: parsedLanguage,
-      proficiency,
+      address: parsedAddress,
     };
 
     if (imagesUrl.length > 0) {
@@ -185,32 +69,56 @@ const EditEmployee = async (req, res) => {
       runValidators: true,
     });
 
-    res.json({ success: true, message: "Employee Updated" });
+    res.json({ success: true, message: "Trainee Updated" });
   } catch (error) {
     console.error("EditEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-
-
-
 // Get all employees
 const ListEmployee = async (req, res) => {
   try {
     const employees = await TrainerPendingPayment.find();
-    res.json({ success: true, employees });
+
+    // Format address for frontend
+    const formattedEmployees = employees.map(emp => {
+      let formattedAddress = emp.address;
+      if (typeof emp.address === "object" && emp.address !== null) {
+        const { city, region, country } = emp.address;
+        formattedAddress = [city, region, country].filter(Boolean).join(", ");
+      }
+      return {
+        ...emp._doc,
+        address: formattedAddress,
+      };
+    });
+
+    res.json({ success: true, employees: formattedEmployees });
   } catch (error) {
     console.error("ListEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// Get featured employees
+// Get featured employees (optional)
 const ListFeaturedEmployees = async (req, res) => {
   try {
     const featured = await TrainerPendingPayment.find({ isFeatured: true });
-    res.json({ success: true, employees: featured });
+
+    const formattedFeatured = featured.map(emp => {
+      let formattedAddress = emp.address;
+      if (typeof emp.address === "object" && emp.address !== null) {
+        const { city, region, country } = emp.address;
+        formattedAddress = [city, region, country].filter(Boolean).join(", ");
+      }
+      return {
+        ...emp._doc,
+        address: formattedAddress,
+      };
+    });
+
+    res.json({ success: true, employees: formattedFeatured });
   } catch (error) {
     console.error("ListFeaturedEmployees Error:", error);
     res.status(500).json({ success: false, message: error.message });
@@ -221,9 +129,15 @@ const ListFeaturedEmployees = async (req, res) => {
 const SingleEmployee = async (req, res) => {
   try {
     const { id } = req.body;
-const employee = await TrainerPendingPayment.findById(id);
+    const emp = await TrainerPendingPayment.findById(id);
 
-    res.json({ success: true, employee });
+    let formattedAddress = emp.address;
+    if (typeof emp.address === "object" && emp.address !== null) {
+      const { city, region, country } = emp.address;
+      formattedAddress = [city, region, country].filter(Boolean).join(", ");
+    }
+
+    res.json({ success: true, employee: { ...emp._doc, address: formattedAddress } });
   } catch (error) {
     console.error("SingleEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });
@@ -234,7 +148,7 @@ const employee = await TrainerPendingPayment.findById(id);
 const RemoveEmployee = async (req, res) => {
   try {
     await TrainerPendingPayment.findByIdAndDelete(req.body.id);
-    res.json({ success: true, message: "Employee Removed" });
+    res.json({ success: true, message: "Trainee Removed" });
   } catch (error) {
     console.error("RemoveEmployee Error:", error);
     res.status(500).json({ success: false, message: error.message });
@@ -246,7 +160,20 @@ const getEmployeeStats = async (req, res) => {
   try {
     const count = await TrainerPendingPayment.countDocuments();
     const latest = await TrainerPendingPayment.find().sort({ createdAt: -1 }).limit(5);
-    res.json({ success: true, count, latest });
+
+    const formattedLatest = latest.map(emp => {
+      let formattedAddress = emp.address;
+      if (typeof emp.address === "object" && emp.address !== null) {
+        const { city, region, country } = emp.address;
+        formattedAddress = [city, region, country].filter(Boolean).join(", ");
+      }
+      return {
+        ...emp._doc,
+        address: formattedAddress,
+      };
+    });
+
+    res.json({ success: true, count, latest: formattedLatest });
   } catch (error) {
     console.error("getEmployeeStats Error:", error);
     res.status(500).json({ success: false, message: "Failed to get profile stats" });

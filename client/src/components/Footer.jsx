@@ -24,7 +24,7 @@ const Footer = () => {
       <FaEnvelope size={20} />
     </div>
   </a>
-  <a href="https://t.me/tesfapreretirement" className="text-primary-custom text-decoration-none me-2">
+  <a href="https://t.me/+R_eMpqI__dRkODI8" className="text-primary-custom text-decoration-none me-2">
     <div className="icon">
       <FaTelegram size={20} />
     </div>

@@ -35,7 +35,9 @@ const About = () => {
               <FaBullseye className="me-2 text-primary-custom fw-bold" />ተልዕኮ 
             </h5>
             <p className="text-muted mb-0">
-             ከጡረታ በፊትና በኋላ ለሚገኙ ዜጎች ሙያዊ ክህሎቶችንና የአኗኗር ዘይቤ ምክሮችን በመስጠት፣ ቀጣይነት ያለው የሥራ ተሳትፎና ግላዊ እርካታ እንዲያገኙ መርዳት፤ ይህንም በዘመናዊ የኦንላይን ሥልጠናና በውጤታማ የሥራ ማገናኛ አገልግሎት ማሳካት።   </p>
+           ሰራተኞች ከስራ ህይወት ወደ የጡረታ ህይወት በሚያደርጉት ሽግግር ሂደት ሊያጋጥማቸው የሚችል
+ኢኮኖሚያዊ፣ ሥነ-ልቦናዊ፣ እና ማህበራዊ ፈተናዎችን እንዲቋቋሙ ለማስቻል የቅድመ ጠረታና የድህረ
+ጡረታ የሥልጠና መድረኮችን አዘጋጅቶ ስልጠና መስጠት፣ አቅም መገንባት፣ የምክር አገልግሎት መስጠት።   </p>
           </div>
 
           {/* Vision */}
@@ -44,17 +46,35 @@ const About = () => {
               <FaLightbulb className="me-2 text-primary-custom fw-bold"  />ራዕይ 
             </h5>
             <p className="text-muted mb-0">
-              ጡረታን የዕድገትና የፈጠራ ምዕራፍ በማድረግ፣ የእያንዳንዱን ዜጋ ልምድና እውቀት ለሀገር ልማት የሚውልበትን ምቹ ሥነ-ምህዳር መፍጠር።  </p>
+             ጡረተኞች በአዲሱ የህይወት ምዕራፋቸው ስኬታማ፣ ተደሳችና ፋይዳ ያለው ኑሮ እንዲመሩ
+የሚያስችል ዕውቀትና ብቃት የሚያጎናጽፍ መሪ የስልጠና ተቋም መሆን።
+ </p>
           </div>
 
-          {/* Values */}
-          <div className="mb-4">
-            <h5 className="d-flex align-items-center">
-              <FaHandshake className="me-2 text-primary-custom" />እሴቶች 
-            </h5>
-            <p className="text-muted mb-0">
-             የእያንዳንዱን ግለሰብ የረጅም ዓመታት ልምድና እውቀት ከፍ ያለ ግምት በመስጠት፣ ለቀጣይ ትውልድ እንዲተላለፍ እና ለሀገር ዕድገት እንዲውል ማገዝ።      </p>
-          </div>
+         {/* Values */}
+<div className="mb-4">
+  <h5 className="d-flex align-items-center">
+    <FaHandshake className="me-2 text-primary-custom" />እሴቶች
+  </h5>
+
+  <ul className="list-group list-group-flush text-muted">
+    <li className="list-group-item">
+      የለውጥ ድጋፍ (Transition Support): ከሥራ ሕይወት ወደ ጡረታ የሚደረገውን ሽግግር በዕውቀትና በልበ ሙሉነት መደገፍ።
+    </li>
+    <li className="list-group-item">
+      ሙሉአዊ ዝግጅት (Holistic Preparation): የፋይናንስ፣ የጤና እና የማኅበራዊ ሕይወት ዘርፎችን ያካተተ ሁለንተናዊ ዝግጅትን ማረጋገጥ።
+    </li>
+    <li className="list-group-item">
+      የጡረተኞች ክብር (Retiree Dignity): ለእያንዳንዱ ተሳታፊ ክብርና አክብሮት መስጠት እንዲሁም የነቃ ተሳትፎውን ማበረታታት።
+    </li>
+    <li className="list-group-item">
+      ተጨባጭ ዕውቀት (Practical Knowledge): በጡረታ ሕይወት ውስጥ አስፈላጊና ተግባራዊ የሆኑ ክህሎቶችንና መረጃዎችን ማቅረብ።
+    </li>
+    <li className="list-group-item">
+      ዘላቂ ፋይዳ (Lasting Impact): በሥልጠናው ምክንያት ረዥም ጊዜ የሚዘልቅ ስኬታማና ተደሳች የጡረታ ሕይወትን ማጎናጸፍ።
+    </li>
+  </ul>
+</div>
 
           {/* CTA Button */}
           <Link to="/about" className="btn bg-primary-custom text-white mt-3">

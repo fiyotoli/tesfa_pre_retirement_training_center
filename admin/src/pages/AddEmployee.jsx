@@ -139,7 +139,7 @@ formData.append("currentLocation", JSON.stringify({ city, region, country }));
       {/* profile Upload */}
       <div className="mb-4 pt-2">
         <h2 className="mb-4 text-primary-custom d-flex align-items-center gap-2">
-          <FaUserPlus className="text-primary-custom" /> Upload Employee Profile
+          <FaUserPlus className="text-primary-custom" /> Upload Trainee Profile
         </h2>
 
         <label
